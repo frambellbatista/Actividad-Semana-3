@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    ports:
+      - 3309:3309
+    environment:
+      MYSQL_ROOT_PASSWORD: 2162377
+      MYSQL_DATABASE: Frambel
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - 3309:3309
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - mariadb

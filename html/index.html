@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla frambel_2162377</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabla frambel_2162377</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Matricula</th>
+        </tr>
+
+        <script>
+            fetch('/data.php')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(row => {
+                        document.write(`
+                            <tr>
+                                <td>${row.id}</td>
+                                <td>${row.nombre}</td>
+                                <td>${row.matricula}</td>
+                            </tr>
+                        `);
+                    });
+                });
+        </script>
+    </table>
+</body>
+</html>
